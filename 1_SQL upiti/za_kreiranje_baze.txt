@@ -1,0 +1,68 @@
+CREATE TYPE uloga AS ENUM ('Administrator', 'Kandidati');
+
+
+CREATE TABLE Korisnik (
+    id SERIAL PRIMARY KEY,
+    ime VARCHAR(50) NOT NULL,
+    prezime VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    lozinka TEXT NOT NULL,
+    uloga uloga NOT NULL,
+    datum_registracije DATE DEFAULT CURRENT_DATE
+);
+
+------------------docdje je izvrseno-----------------------------
+
+CREATE TABLE Konkurs (
+    id SERIAL PRIMARY KEY,
+    naziv VARCHAR(100) NOT NULL,
+    opis TEXT NOT NULL,
+    rok_prijave DATE NOT NULL,
+    status VARCHAR(50) NOT NULL,
+    id_administratora INT REFERENCES Korisnik(id)
+);
+
+CREATE TABLE PoljaPrijave (
+    id SERIAL PRIMARY KEY,
+    naziv VARCHAR(255) NOT NULL,
+    obavezno BOOLEAN NOT NULL,
+    id_konkursa INT REFERENCES Konkurs(id)
+);
+
+CREATE TABLE Prijava (
+    id SERIAL PRIMARY KEY,
+    id_konkursa INT REFERENCES Konkurs(id),
+    id_kandidata INT REFERENCES Korisnik(id),
+    datum_prijave DATE DEFAULT CURRENT_DATE,
+    status VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE DokumentiPrijave (
+    id SERIAL PRIMARY KEY,
+    naziv VARCHAR(100) NOT NULL,
+    putanja TEXT NOT NULL,
+    id_prijave INT REFERENCES Prijava(id)
+);
+
+CREATE TABLE OcjenaKandidata (
+    id SERIAL PRIMARY KEY,
+    id_prijave INT REFERENCES Prijava(id),
+    kriterijum TEXT NOT NULL,
+    ocjena INT NOT NULL
+);
+
+CREATE TABLE Komunikacija (
+    id SERIAL PRIMARY KEY,
+    id_prijave INT REFERENCES Prijava(id),
+    posiljalac INT REFERENCES Korisnik(id),
+    primatelj INT REFERENCES Korisnik(id),
+    sadrzaj TEXT NOT NULL,
+    datum DATE DEFAULT CURRENT_DATE
+);
+
+CREATE TABLE Intervju (
+    id SERIAL PRIMARY KEY,
+    id_prijave INT REFERENCES Prijava(id),
+    datum TIMESTAMP NOT NULL,
+    napomena TEXT
+);
