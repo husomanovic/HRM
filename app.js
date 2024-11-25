@@ -42,10 +42,23 @@
 
 import express from 'express';
 import router from './routes/index.js';
+import  login  from './routes/login.js';
+import cors from 'cors';
+
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true })); 
+app.use(cors());
+
+
+app.use(express.static('public'));
+app.use('/public', express.static('public'));
+
 
 app.use('/', router);  // Ispravi na app.use umesto app.get
+app.use("/login",login)
+
 
 app.listen(3000, () => {
   console.log('Example app listening on port 3000!');

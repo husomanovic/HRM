@@ -1,0 +1,96 @@
+/* Opšti stilovi */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F4F4F4; /* Svetlo siva pozadina */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .form-container {
+    background-color: #FFFFFF; /* Bela pozadina forme */
+    border: 1px solid #333333; /* Tamno siva ivica */
+    border-radius: 8px;
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #003366; /* Tamno plava za naslov */
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    color: #333333; /* Tamno siva za tekst */
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+  
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #4CAF50; /* Zelena prilikom fokusa */
+  }
+  
+  .btn {
+    background-color: #4CAF50; /* Zelena za dugme */
+    color: #FFFFFF; /* Bela za tekst na dugmetu */
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    text-transform: uppercase;
+  }
+  
+  .btn:hover {
+    background-color: #45A049; /* Tamnija zelena na hover */
+  }
+  
+  .footer {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #333333; /* Tamno siva za tekst */
+  }
+  
+  .footer a {
+    color: #003366; /* Tamno plava za linkove */
+    text-decoration: none;
+  }
+  
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Specifični stilovi za login formu */
+  .login-container {
+    max-width: 400px; /* Manja širina za login formu */
+  }
+  
+  /* Specifični stilovi za formu za kreiranje korisnika */
+  .create-user-container {
+    max-width: 500px; /* Veća širina za formu za kreiranje korisnika */
+  }
+  
